@@ -12,12 +12,19 @@ output_file("my_GUI.html")
 # set up textarea (div)
 top = Div(
     text="""
-          <h1 style="width:650px; height:40px;text-align:center;border-style:solid">Calculate Backward Curve</h3>
+          <h1 style="width:680px; height:40px;text-align:center;border-style:solid">Calculate Backward Curve</h3>
           """,
-    width = 650,
+    width = 680,
     height = 60,
 )
-
+subtitle1 = Div(
+    text="""
+          <p>Input</p>
+          """,
+    width=150,
+    height=30,
+    margin = [0,0,0,15],
+)
 
 # set up textarea (div)
 channel_length_textarea = Div(
@@ -124,7 +131,7 @@ dx_text_input = TextInput(
 )
 dx = row(dx_textarea,dx_text_input)
 
-input = column(L,b,Q,C,h0,S0,dx)
+input = column(subtitle1,L,b,Q,C,h0,S0,dx)
 
 graph= Div(
     text="""
@@ -132,24 +139,36 @@ graph= Div(
           """,
     width = 400,
     height = 300,
+    margin = [0,0,0,30],
 )
-
-main = row(input,graph)
+subtitle2 = Div(
+    text="""
+          <p>Output</p>
+          """,
+    width=150,
+    height=30,
+    margin = [0,0,0,15],
+)
+ouput = column(subtitle2,graph)
+main = row(input,ouput)
 
 button1 = Button(label="Calculate",
-    width = 200,
-    height = 30
+    width = 50,
+    height = 30,
+    margin=[0,0,0,30]
 )
 button2 = Button(label="Display Graph",
-    width = 200,
-    height = 30
+    width = 100,
+    height = 30,
+    margin=[0,0,0,53]
 )
 button3 = Button(label="Exit",
-    width = 200,
-    height = 30
+    width = 50,
+    height = 30,
+    margin=[0,0,0,30]
 )
 
-buttons = row(button1,button2,button3,width = 650,height = 40)
+buttons = row(button1,button2,button3,width = 650,height = 40,margin=[0,0,0,160])
 
 # show result
 show(column(top,main,buttons))
